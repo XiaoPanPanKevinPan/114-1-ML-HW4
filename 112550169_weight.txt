@@ -1,0 +1,3 @@
+Link to the models: https://drive.google.com/drive/folders/1NTU_wpe_eXaNrwJJgGWaSWLW_L3No-Nh
+
+Inside the directory, `best_model_semisupervised.pth` is the final model, which should be the one you want.

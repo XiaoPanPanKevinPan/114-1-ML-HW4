@@ -1,0 +1,7 @@
+data
+__pycache__
+best_model*.pth
+checkpoint*.pth
+prev_*
+output.log
+output_semi.log
