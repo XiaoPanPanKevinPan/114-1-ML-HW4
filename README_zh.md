@@ -24,9 +24,9 @@ pip install torch torchvision pandas loguru tqdm matplotlib scikit-learn pillow 
 - `main.py`：訓練第一階段。只使用有標籤的 `data/train` 訓練。
 - `semi_supervised.py`：訓練第二階段（Semi-Supervised）。混合真實資料 + `data/unlabeled` 的推測標記進行訓練。
 - `inference.py`：推論腳本。用來幫 `data/test` 和 `data/unlabeled` 做標記。可以給定信心門檻，過濾掉不確定的預測。（可以使用 `--help` 查看選項）
-    - `--preset 1`：在第一階段訓練後，使用 `best_model.pth` 推論 `data/test`（以防萬一不小心刪掉 `submission.csv`）。
+    - `--preset 1`：在第一階段訓練後，使用 `best_model.pth` 推論 `data/test`（以防萬一不小心刪掉 `submission.csv`，或者最後一個 epoch 不是 best_model 而把它覆蓋掉）。
     - `--preset 2`：在第二階段訓練前，使用 `best_model.pth` 推論 `data/unlabeled`（用於半監督學習／微調）。這邊會用 `--threshold 0.99` 過濾掉不確定的資料。
-    - `--preset 3`：在第二階段訓練後，使用 `best_model_semisupervised.pth` 推論 `data/test`（以防萬一不小心刪掉 `submission_semisupervised.csv`）。
+    - `--preset 3`：在第二階段訓練後，使用 `best_model_semisupervised.pth` 推論 `data/test`（以防萬一不小心刪掉 `submission_semisupervised.csv`，或者最後一個 epoch 不是 best_model_semisupervised 而把它覆蓋掉）。
 
 這個入口檔案用來輔助訓練：
 - `threshold_finder.py`：輔助 `inference.py` 的腳本。給定信心門檻後，會回傳正確預測的比例，用以尋找一個好的信心門檻。（可以使用 `--help` 查看選項）

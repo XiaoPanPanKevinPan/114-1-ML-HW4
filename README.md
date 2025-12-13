@@ -25,9 +25,9 @@ Entry points used for reproducing the assignment:
 - `main.py`: Stage 1 Training. Trains using only the labeled `data/train`.
 - `semi_supervised.py`: Stage 2 Training (Semi-Supervised). Trains using a mix of real data and pseudo-labeled `data/unlabeled`.
 - `inference.py`: Inference script. Labels `data/test` and `data/unlabeled`. Capable of filtering uncertain predictions using a confidence threshold. (Use `--help` to see options)
-    - `--preset 1`: Infers `data/test` using `best_model.pth` after Stage 1 (in case `submission.csv` is lost).
+    - `--preset 1`: Infers `data/test` using `best_model.pth` after Stage 1 (in case `submission.csv` is lost, or is replaced when the last epoch is not the best_model).
     - `--preset 2`: Infers `data/unlabeled` using `best_model.pth` before Stage 2 (for generating pseudo-labels). Filters uncertain data with `--threshold 0.99`.
-    - `--preset 3`: Infers `data/test` using `best_model_semisupervised.pth` after Stage 2 (for final submission).
+    - `--preset 3`: Infers `data/test` using `best_model_semisupervised.pth` after Stage 2 (in case `submission_semisupervised.csv` is lost, or is replaced when the last epoch is not the best_model_semisupervised).
 
 Helper script:
 - `threshold_finder.py`: Helper for `inference.py`. Give it a confidence threshold, and it reports the precision on the validation set, to help find an optimal threshold. (Use `--help` to see options)
